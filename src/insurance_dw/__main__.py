@@ -7,6 +7,7 @@
     python -m insurance_dw run --as-of 2026-10-31 # incremental run
     python -m insurance_dw benchmark --year 2026 --closing 2026-10-31
     python -m insurance_dw demo                   # all of the above, in order
+    python -m insurance_dw export --out powerbi/data   # feed of the Power BI dashboard (Parquet)
 
 Exit code 1 when a run does not pass the data quality gate (schedulers stop the chain),
 2 when it stopped with an error.
@@ -18,7 +19,7 @@ import argparse
 import json
 from datetime import date
 
-from insurance_dw import benchmark, deploy, run
+from insurance_dw import benchmark, deploy, export, run
 from insurance_dw.seed import FIRST_LOAD, MONTH_LATER
 
 EXIT = {"passed": 0, "failed": 1, "error": 2}
@@ -43,6 +44,8 @@ def main(argv: list[str] | None = None) -> int:
     bench = sub.add_parser("benchmark", help="legacy report vs warehouse: time, reads and identical numbers")
     bench.add_argument("--year", type=int, default=2026)
     bench.add_argument("--closing", type=date.fromisoformat, default=MONTH_LATER)
+    exp = sub.add_parser("export", help="export the Power BI feed (pbi views) as Parquet")
+    exp.add_argument("--out", default="powerbi/data")
     demo = sub.add_parser("demo", help="deploy, first load, one month of activity, incremental load, benchmark")
     demo.add_argument("--scale", type=float, default=1.0)
     args = parser.parse_args(argv)
@@ -64,6 +67,9 @@ def main(argv: list[str] | None = None) -> int:
         summary = {"legacy": result["legacy"], "warehouse": result["warehouse"], "differences": len(result["differences"])}
         print(json.dumps(summary))
         return 0 if not result["differences"] else 1
+    if args.command == "export":
+        print(json.dumps(export.export(args.out)))
+        return 0
     if args.command == "demo":
         deploy.deploy()
         deploy.load_legacy(args.scale)

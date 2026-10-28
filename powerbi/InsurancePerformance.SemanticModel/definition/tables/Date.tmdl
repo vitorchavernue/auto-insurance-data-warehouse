@@ -1,0 +1,74 @@
+/// Calendar up to the last closed month (October 2026). Marked as the date table.
+table Date
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Year
+
+	column 'Quarter Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Quarter Number
+
+	column Quarter
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: 'Quarter Number'
+
+	column 'Month Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Month Number
+
+	column Month
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Number'
+
+	column 'Year Month Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Year Month Number
+
+	column 'Year Month'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Year Month
+		sortByColumn: 'Year Month Number'
+
+	column 'Month Start'
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Month Start
+
+	partition Date = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "date.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Date", type date }, { "Year", Int64.Type }, { "Quarter Number", Int64.Type }, { "Quarter", type text }, { "Month Number", Int64.Type }, { "Month", type text }, { "Year Month Number", Int64.Type }, { "Year Month", type text }, { "Month Start", type date } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

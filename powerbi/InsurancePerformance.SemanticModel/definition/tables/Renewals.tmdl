@@ -1,0 +1,71 @@
+/// Policies that reached the end of their term in each month, and how many were renewed.
+table Renewals
+
+	/// Policies that reached the end of their term (not cancelled).
+	measure 'Expiring Policies' = SUM ( Renewals[Expiring Policies Count] )
+		formatString: #,0
+		displayFolder: 5. Retention
+
+	/// Expiring policies that were renewed.
+	measure 'Renewed Policies' = SUM ( Renewals[Renewed Policies Count] )
+		formatString: #,0
+		displayFolder: 5. Retention
+
+	/// Renewed policies / expiring policies: the retention of the portfolio.
+	measure 'Renewal Rate' = DIVIDE ( [Renewed Policies], [Expiring Policies] )
+		formatString: 0.0%
+		displayFolder: 5. Retention
+
+	column Month
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column 'Expiring Policies Count'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Expiring Policies
+
+	column 'Renewed Policies Count'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Renewed Policies
+
+	partition Renewals = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "renewals.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Month", type date }, { "Product Key", Int64.Type }, { "Broker Key", Int64.Type }, { "Geography Key", Int64.Type }, { "Expiring Policies", Int64.Type }, { "Renewed Policies", Int64.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

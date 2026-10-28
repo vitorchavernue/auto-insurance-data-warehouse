@@ -1,0 +1,26 @@
+/// Insurance products of the portfolio.
+table Product
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column Product
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Product
+
+	partition Product = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "product.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Product Key", Int64.Type }, { "Product", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

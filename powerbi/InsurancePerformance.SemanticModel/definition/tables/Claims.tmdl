@@ -1,0 +1,178 @@
+/// One row per claim with its status and totals. Identified only by the claim number.
+table Claims
+
+	/// Every claim reported, including denied ones.
+	measure 'Claims Reported' = COUNTROWS ( Claims )
+		formatString: #,0
+		displayFolder: 2. Claims
+
+	/// Claims that happened in the period, except denied ones.
+	measure 'Claim Count' = CALCULATE ( COUNTROWS ( Claims ), Claims[Status] <> "Denied" )
+		formatString: #,0
+		displayFolder: 2. Claims
+
+	/// Claims per 100 vehicle-years of cover (annualised).
+	measure 'Claim Frequency' = DIVIDE ( [Claim Count], [Exposure (vehicle-years)] ) * 100
+		formatString: 0.00
+		displayFolder: 3. Results
+
+	/// Severity: incurred cost per claim (claims that happened in the period).
+	measure 'Average Claim Cost' = DIVIDE ( CALCULATE ( SUM ( Claims[Incurred Amount] ), Claims[Status] <> "Denied" ), [Claim Count] )
+		formatString: "R$" #,0
+		displayFolder: 3. Results
+
+	/// Reserve still open: what the insurer expects to pay on claims not closed yet.
+	measure 'Open Reserve' = SUM ( Claims[Open Reserve Amount] )
+		formatString: "R$" #,0
+		displayFolder: 2. Claims
+
+	/// Days between the occurrence and the report by the customer.
+	measure 'Average Report Lag (days)' = AVERAGE ( Claims[Report Lag Days] )
+		formatString: 0.0
+		displayFolder: 2. Claims
+
+	/// Claims whose occurrence is outside the cover: flagged for the claims team.
+	measure 'Claims Outside Policy Period' = CALCULATE ( COUNTROWS ( Claims ), Claims[Outside Policy Period] = "Yes" )
+		formatString: #,0
+		displayFolder: 2. Claims
+
+	/// Theft and robbery claims (not denied).
+	measure 'Theft Claims' = CALCULATE ( [Claim Count], Coverage[Coverage Code] = "ROUBO" )
+		formatString: #,0
+		displayFolder: 4. Theft
+
+	/// Stolen vehicles found, before payment or afterwards (sold as salvage).
+	measure 'Vehicles Found' = CALCULATE ( SUM ( Claims[Vehicle Found Flag] ), Coverage[Coverage Code] = "ROUBO", Claims[Status] <> "Denied" )
+		formatString: #,0
+		displayFolder: 4. Theft
+
+	/// Share of the stolen vehicles that were found.
+	measure 'Theft Recovery Rate' = DIVIDE ( [Vehicles Found], [Theft Claims] )
+		formatString: 0.0%
+		displayFolder: 4. Theft
+
+	/// Money recovered by selling vehicles found after the claim was paid.
+	measure 'Salvage Recovered' = SUM ( Claims[Recovered Amount] )
+		formatString: "R$" #,0
+		displayFolder: 4. Theft
+
+	column 'Claim Number'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Claim Number
+
+	column 'Occurred Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Occurred Date
+
+	column 'Reported Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Reported Date
+
+	column 'Coverage Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Key
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column 'Vehicle Profile Key'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Vehicle Profile Key
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column Cause
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Cause
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Status
+
+	column 'Outside Policy Period'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Outside Policy Period
+
+	column 'Vehicle Found Flag'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Vehicle Found
+
+	column 'Report Lag Days'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Report Lag Days
+
+	column 'Paid Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Paid Amount
+
+	column 'Open Reserve Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Open Reserve
+
+	column 'Recovered Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Recovered Amount
+
+	column 'Incurred Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Incurred Amount
+
+	partition Claims = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "claims.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Claim Number", Int64.Type }, { "Occurred Date", type date }, { "Reported Date", type date }, { "Coverage Key", Int64.Type }, { "Product Key", Int64.Type }, { "Vehicle Profile Key", type text }, { "Broker Key", Int64.Type }, { "Geography Key", Int64.Type }, { "Cause", type text }, { "Status", type text }, { "Outside Policy Period", type text }, { "Vehicle Found", Int64.Type }, { "Report Lag Days", Int64.Type }, { "Paid Amount", Currency.Type }, { "Open Reserve", Currency.Type }, { "Recovered Amount", Currency.Type }, { "Incurred Amount", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

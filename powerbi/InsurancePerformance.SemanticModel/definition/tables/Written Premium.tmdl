@@ -1,0 +1,113 @@
+/// Premium sold, by month of issue (new business and renewals).
+table 'Written Premium'
+
+	/// Net premium of the policies issued in the period.
+	measure 'Written Premium' = SUM ( 'Written Premium'[Written Premium Amount] )
+		formatString: "R$" #,0
+		displayFolder: 1. Premium
+
+	/// Policies issued in the period (each policy counted once, whatever its number of coverages).
+	measure 'Policies Written' = SUM ( 'Written Premium'[Policies Count] )
+		formatString: #,0
+		displayFolder: 1. Premium
+
+	/// Written premium divided by the number of policies issued.
+	measure 'Average Premium per Policy' = DIVIDE ( [Written Premium], [Policies Written] )
+		formatString: "R$" #,0
+		displayFolder: 1. Premium
+
+	/// Premium of the days after a cancellation: sold but never earned.
+	measure 'Cancelled Premium' = SUM ( 'Written Premium'[Cancelled Premium Amount] )
+		formatString: "R$" #,0
+		displayFolder: 1. Premium
+
+	/// Share of the written premium that comes from renewed policies.
+	measure 'Renewal Share of Premium' = DIVIDE ( CALCULATE ( [Written Premium], 'Written Premium'[Business Type] = "Renewal" ), [Written Premium] )
+		formatString: 0.0%
+		displayFolder: 1. Premium
+
+	column Month
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Coverage Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Key
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column 'Vehicle Profile Key'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Vehicle Profile Key
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column 'Business Type'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Business Type
+
+	column 'Policies Count'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Policies
+
+	column 'Coverages Count'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverages
+
+	column 'Written Premium Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Written Premium
+
+	column 'Cancelled Premium Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Cancelled Premium
+
+	partition 'Written Premium' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "written_premium.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Month", type date }, { "Coverage Key", Int64.Type }, { "Product Key", Int64.Type }, { "Vehicle Profile Key", type text }, { "Broker Key", Int64.Type }, { "Geography Key", Int64.Type }, { "Business Type", type text }, { "Policies", Int64.Type }, { "Coverages", Int64.Type }, { "Written Premium", Currency.Type }, { "Cancelled Premium", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

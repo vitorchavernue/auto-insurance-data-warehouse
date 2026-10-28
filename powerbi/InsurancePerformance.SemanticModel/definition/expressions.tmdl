@@ -1,0 +1,5 @@
+/// Folder with the files exported by "python -m insurance_dw export" (must end with a backslash).
+expression DataFolder = "C:\dev\github\vitorchavernue\auto-insurance-data-warehouse\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,121 @@
+/// Claim cost movements per month: payments, reserve changes and recoveries.
+table 'Claim Movements'
+
+	/// Claim cost recorded in the period: payments + reserve changes - recoveries.
+	measure 'Incurred Claims' = SUM ( 'Claim Movements'[Incurred Amount] )
+		formatString: "R$" #,0
+		displayFolder: 2. Claims
+
+	/// Payments made in the period.
+	measure 'Claims Paid' = SUM ( 'Claim Movements'[Paid Amount] )
+		formatString: "R$" #,0
+		displayFolder: 2. Claims
+
+	/// Incurred claims / earned premium. Below the target the portfolio pays for its claims and expenses.
+	measure 'Loss Ratio' = DIVIDE ( [Incurred Claims], [Earned Premium] )
+		formatString: 0.0%
+		displayFolder: 3. Results
+
+	/// Maximum loss ratio accepted by the pricing of the portfolio (70%).
+	measure 'Loss Ratio Target' = 0.70
+		formatString: 0.0%
+		displayFolder: 3. Results
+
+	/// Loss ratio in the same period of the previous year.
+	measure 'Loss Ratio PY' = CALCULATE ( [Loss Ratio], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+		formatString: 0.0%
+		displayFolder: 3. Results
+
+	/// Change of the loss ratio against the same period of the previous year, in percentage points.
+	measure 'Loss Ratio vs PY (pp)' =
+			VAR ThisPeriod = [Loss Ratio]
+			VAR LastYear = [Loss Ratio PY]
+			RETURN IF ( NOT ISBLANK ( ThisPeriod ) && NOT ISBLANK ( LastYear ), ( ThisPeriod - LastYear ) * 100 )
+		formatString: +0.0" pp";-0.0" pp";0.0" pp"
+		displayFolder: 3. Results
+
+	/// Earned premium minus incurred claims (before commissions and expenses).
+	measure 'Technical Result' = [Earned Premium] - [Incurred Claims]
+		formatString: "R$" #,0
+		displayFolder: 3. Results
+
+	column Month
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Coverage Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Key
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column 'Vehicle Profile Key'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Vehicle Profile Key
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column 'Paid Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Paid
+
+	column 'Reserve Change Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Reserve Change
+
+	column 'Recovered Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Recovered
+
+	column 'Incurred Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Incurred Claims
+
+	partition 'Claim Movements' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "claim_movements.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Month", type date }, { "Coverage Key", Int64.Type }, { "Product Key", Int64.Type }, { "Vehicle Profile Key", type text }, { "Broker Key", Int64.Type }, { "Geography Key", Int64.Type }, { "Paid", Currency.Type }, { "Reserve Change", Currency.Type }, { "Recovered", Currency.Type }, { "Incurred Claims", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

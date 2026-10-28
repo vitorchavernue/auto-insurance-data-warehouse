@@ -1,0 +1,40 @@
+/// Coverages sold: theft and robbery, collision, third-party liability, glass.
+table Coverage
+
+	column 'Coverage Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Key
+
+	column 'Coverage Code'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Coverage Code
+
+	column 'Coverage Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Order
+
+	column Coverage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Coverage
+		sortByColumn: 'Coverage Order'
+
+	partition Coverage = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "coverage.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Coverage Key", Int64.Type }, { "Coverage Code", type text }, { "Coverage Order", Int64.Type }, { "Coverage", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

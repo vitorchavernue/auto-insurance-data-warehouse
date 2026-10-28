@@ -1,0 +1,112 @@
+relationship earned_premium_date
+	fromColumn: 'Earned Premium'.Month
+	toColumn: Date.Date
+
+relationship written_premium_date
+	fromColumn: 'Written Premium'.Month
+	toColumn: Date.Date
+
+relationship claim_movements_date
+	fromColumn: 'Claim Movements'.Month
+	toColumn: Date.Date
+
+relationship claims_date
+	fromColumn: Claims.'Occurred Date'
+	toColumn: Date.Date
+
+relationship renewals_date
+	fromColumn: Renewals.Month
+	toColumn: Date.Date
+
+relationship earned_premium_coverage
+	fromColumn: 'Earned Premium'.'Coverage Key'
+	toColumn: Coverage.'Coverage Key'
+
+relationship earned_premium_product
+	fromColumn: 'Earned Premium'.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship earned_premium_vehicle_profile
+	fromColumn: 'Earned Premium'.'Vehicle Profile Key'
+	toColumn: 'Vehicle Profile'.'Vehicle Profile Key'
+
+relationship earned_premium_broker
+	fromColumn: 'Earned Premium'.'Broker Key'
+	toColumn: Broker.'Broker Key'
+
+relationship earned_premium_geography
+	fromColumn: 'Earned Premium'.'Geography Key'
+	toColumn: Geography.'Geography Key'
+
+relationship written_premium_coverage
+	fromColumn: 'Written Premium'.'Coverage Key'
+	toColumn: Coverage.'Coverage Key'
+
+relationship written_premium_product
+	fromColumn: 'Written Premium'.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship written_premium_vehicle_profile
+	fromColumn: 'Written Premium'.'Vehicle Profile Key'
+	toColumn: 'Vehicle Profile'.'Vehicle Profile Key'
+
+relationship written_premium_broker
+	fromColumn: 'Written Premium'.'Broker Key'
+	toColumn: Broker.'Broker Key'
+
+relationship written_premium_geography
+	fromColumn: 'Written Premium'.'Geography Key'
+	toColumn: Geography.'Geography Key'
+
+relationship claim_movements_coverage
+	fromColumn: 'Claim Movements'.'Coverage Key'
+	toColumn: Coverage.'Coverage Key'
+
+relationship claim_movements_product
+	fromColumn: 'Claim Movements'.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship claim_movements_vehicle_profile
+	fromColumn: 'Claim Movements'.'Vehicle Profile Key'
+	toColumn: 'Vehicle Profile'.'Vehicle Profile Key'
+
+relationship claim_movements_broker
+	fromColumn: 'Claim Movements'.'Broker Key'
+	toColumn: Broker.'Broker Key'
+
+relationship claim_movements_geography
+	fromColumn: 'Claim Movements'.'Geography Key'
+	toColumn: Geography.'Geography Key'
+
+relationship claims_coverage
+	fromColumn: Claims.'Coverage Key'
+	toColumn: Coverage.'Coverage Key'
+
+relationship claims_product
+	fromColumn: Claims.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship claims_vehicle_profile
+	fromColumn: Claims.'Vehicle Profile Key'
+	toColumn: 'Vehicle Profile'.'Vehicle Profile Key'
+
+relationship claims_broker
+	fromColumn: Claims.'Broker Key'
+	toColumn: Broker.'Broker Key'
+
+relationship claims_geography
+	fromColumn: Claims.'Geography Key'
+	toColumn: Geography.'Geography Key'
+
+relationship renewals_product
+	fromColumn: Renewals.'Product Key'
+	toColumn: Product.'Product Key'
+
+relationship renewals_broker
+	fromColumn: Renewals.'Broker Key'
+	toColumn: Broker.'Broker Key'
+
+relationship renewals_geography
+	fromColumn: Renewals.'Geography Key'
+	toColumn: Geography.'Geography Key'
+

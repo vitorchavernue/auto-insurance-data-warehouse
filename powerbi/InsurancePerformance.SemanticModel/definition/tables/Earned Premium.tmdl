@@ -1,0 +1,89 @@
+/// Premium earned day by day in each closed month, and exposure in vehicle-years.
+table 'Earned Premium'
+
+	/// Premium earned in the period: premium x days in force / days of the term.
+	measure 'Earned Premium' = SUM ( 'Earned Premium'[Earned Premium Amount] )
+		formatString: "R$" #,0
+		displayFolder: 1. Premium
+
+	/// Earned premium in the same period of the previous year.
+	measure 'Earned Premium PY' = CALCULATE ( [Earned Premium], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+		formatString: "R$" #,0
+		displayFolder: 1. Premium
+
+	/// Growth of earned premium against the same period of the previous year.
+	measure 'Earned Premium YoY %' = DIVIDE ( [Earned Premium] - [Earned Premium PY], [Earned Premium PY] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 1. Premium
+
+	/// Vehicle-years of cover in the period: the base of the claim frequency.
+	measure 'Exposure (vehicle-years)' = SUM ( 'Earned Premium'[Exposure Years] )
+		formatString: #,0
+		displayFolder: 1. Premium
+
+	column Month
+		dataType: dateTime
+		isHidden
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Coverage Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Coverage Key
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Product Key
+
+	column 'Vehicle Profile Key'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Vehicle Profile Key
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column 'Earned Premium Amount'
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Earned Premium
+
+	column 'Exposure Years'
+		dataType: double
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Exposure Years
+
+	partition 'Earned Premium' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "earned_premium.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Month", type date }, { "Coverage Key", Int64.Type }, { "Product Key", Int64.Type }, { "Vehicle Profile Key", type text }, { "Broker Key", Int64.Type }, { "Geography Key", Int64.Type }, { "Earned Premium", type number }, { "Exposure Years", type number } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,38 @@
+/// Risk profile of the insured vehicle: category and market value band (FIPE).
+table 'Vehicle Profile'
+
+	column 'Vehicle Profile Key'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Vehicle Profile Key
+
+	column 'Category Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Category Order
+
+	column 'Vehicle Category'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Vehicle Category
+		sortByColumn: 'Category Order'
+
+	column 'Value Band'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Value Band
+
+	partition 'Vehicle Profile' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "vehicle_profile.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Vehicle Profile Key", type text }, { "Category Order", Int64.Type }, { "Vehicle Category", type text }, { "Value Band", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

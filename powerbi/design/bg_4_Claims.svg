@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+  <linearGradient id="shell" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#0E0B0C"/><stop offset="0.6" stop-color="#161114"/><stop offset="1" stop-color="#1F181C"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#FDA4AF"/><stop offset="1" stop-color="#9F1239"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1840 60) scale(900)">
+    <stop stop-color="#E11D48" stop-opacity="0.18"/><stop offset="1" stop-color="#E11D48" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.1" fill="#FFFFFF" fill-opacity="0.045"/>
+  </pattern>
+</defs>
+<rect id="Background" width="1920" height="1080" fill="url(#shell)"/>
+<rect id="Glow" width="1920" height="1080" fill="url(#glow)"/>
+<rect id="Dots" width="1920" height="1080" fill="url(#dots)"/>
+<g id="Navigation rail">
+<g id="Brand mark"><circle cx="48" cy="54" r="26" fill="none" stroke="url(#accent)" stroke-width="2.5"/><g transform="translate(33.0 39.0) scale(1.2500)" fill="none" stroke="#FDA4AF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g></g>
+<rect x="30" y="98" width="36" height="1.5" fill="#34292F"/>
+<g id="Icon Cover" transform="translate(33.0 183.0) scale(1.2500)" fill="none" stroke="#A8999F" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g>
+<g id="Icon Portfolio overview" transform="translate(33.0 279.0) scale(1.2500)" fill="none" stroke="#A8999F" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.5"/><path d="M4 20h16"/></g>
+<g id="Icon Loss ratio drivers" transform="translate(33.0 375.0) scale(1.2500)" fill="none" stroke="#A8999F" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/><path d="M18.5 5.5l-13 13"/></g>
+<g id="Icon Broker performance" transform="translate(33.0 471.0) scale(1.2500)" fill="none" stroke="#A8999F" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.6 14.1a4.5 4.5 0 0 1 5.4 4.4"/></g>
+<circle id="Active Claims and theft" cx="48" cy="582" r="27" fill="#2B1F26" stroke="#E11D48" stroke-width="2"/><rect x="0" y="564" width="4" height="36" rx="2" fill="#E11D48"/>
+<g id="Icon Claims and theft" transform="translate(33.0 567.0) scale(1.2500)" fill="none" stroke="#FDA4AF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15.5v-4L7.2 6.8h9.6L19 11.5v4"/><path d="M3.5 15.5h17"/><path d="M5 11.5h14"/><circle cx="7.7" cy="16.6" r="1.9"/><circle cx="16.3" cy="16.6" r="1.9"/></g>
+</g>
+<rect id="Content panel" x="108.0" y="12.0" width="1800.0" height="1056.0" rx="18" fill="#130F11" stroke="#34292F" stroke-width="1.5"/>
+<g id="Header">
+<circle cx="163.5" cy="52.5" r="22.5" fill="#2B1F26" stroke="#34292F" stroke-width="1.5"/>
+<g id="Header icon" transform="translate(151.0 40.0) scale(1.0417)" fill="none" stroke="#FDA4AF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15.5v-4L7.2 6.8h9.6L19 11.5v4"/><path d="M3.5 15.5h17"/><path d="M5 11.5h14"/><circle cx="7.7" cy="16.6" r="1.9"/><circle cx="16.3" cy="16.6" r="1.9"/></g>
+<rect id="Data badge" x="1485.0" y="39.0" width="390.0" height="42.0" rx="21.0" fill="none" stroke="#9F1239" stroke-width="1.5"/>
+<circle cx="1506.0" cy="60.0" r="5" fill="#E11D48"/>
+<text x="1521.0" y="67.0" font-family="Inter, Segoe UI, sans-serif" font-size="19" font-weight="600" fill="#FDA4AF">SeguroDW · closed through Oct 2026</text>
+<text id="Page title" x="198.0" y="55.5" font-family="Inter, Segoe UI, sans-serif" font-size="28" font-weight="700" fill="#F5EEF0">Claims and Theft</text>
+<text id="Page subtitle" x="198.0" y="87.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" fill="#A8999F">Frequency, cost and status of the claims · theft and robbery with the share of vehicles found</text>
+<rect x="132.0" y="114.0" width="1752.0" height="1.5" fill="#34292F"/>
+<rect x="132.0" y="113.5" width="90" height="2.5" fill="url(#accent)"/>
+</g>
+<g id="Frames">
+<g id="Frame f_year">
+<rect x="132.0" y="126.0" width="225.0" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="325.0" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(314.0 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><circle cx="12" cy="15" r="1.6"/></g>
+</g>
+<g id="Frame k_claims">
+<rect x="375.0" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="395.0" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="578.5" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(567.5 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15.5v-4L7.2 6.8h9.6L19 11.5v4"/><path d="M3.5 15.5h17"/><path d="M5 11.5h14"/><circle cx="7.7" cy="16.6" r="1.9"/><circle cx="16.3" cy="16.6" r="1.9"/></g>
+</g>
+<g id="Frame k_freq">
+<rect x="628.5" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="648.5" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="832.0" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(821.0 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></g>
+</g>
+<g id="Frame k_sev">
+<rect x="882.0" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="902.0" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1085.5" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(1074.5 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.9"/></g>
+</g>
+<g id="Frame k_lag">
+<rect x="1135.5" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="1155.5" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1339.0" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(1328.0 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V10M10 3.5h4M18 7l1.5-1.5"/></g>
+</g>
+<g id="Frame k_recovery">
+<rect x="1389.0" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="1409.0" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1592.5" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(1581.5 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5 20 20"/></g>
+</g>
+<g id="Frame k_reserve">
+<rect x="1642.5" y="126.0" width="235.5" height="138.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<rect x="1662.5" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1846.0" cy="158.0" r="18" fill="#2B1F26" stroke="#34292F" stroke-width="1.2"/>
+<g transform="translate(1835.0 147.0) scale(0.9167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5v1.2M12 14.3v1.2M15.5 12h-1.2M9.7 12H8.5M6 19.5v1.5M18 19.5v1.5"/></g>
+</g>
+<g id="Frame by_cause">
+<rect x="132.0" y="282.0" width="571.5" height="378.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="152.0" cy="313.0" r="4" fill="#E11D48"/>
+</g>
+<g id="Frame by_status">
+<rect x="721.5" y="282.0" width="571.5" height="378.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="741.5" cy="313.0" r="4" fill="#E11D48"/>
+</g>
+<g id="Frame theft_state">
+<rect x="1311.0" y="282.0" width="571.5" height="378.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="1331.0" cy="313.0" r="4" fill="#E11D48"/>
+</g>
+<g id="Frame freq_month">
+<rect x="132.0" y="678.0" width="867.0" height="372.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="152.0" cy="709.0" r="4" fill="#E11D48"/>
+</g>
+<g id="Frame open_claims">
+<rect x="1017.0" y="678.0" width="867.0" height="372.0" rx="14" fill="#1C1619" stroke="#34292F" stroke-width="1.5"/>
+<circle cx="1037.0" cy="709.0" r="4" fill="#E11D48"/>
+</g>
+</g>
+</svg>

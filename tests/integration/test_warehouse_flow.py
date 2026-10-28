@@ -190,6 +190,30 @@ def test_marts_answer_the_business_questions(month_later):
     assert brokers[0]["n"] > 10
 
 
+def test_powerbi_feed_reconciles_with_the_warehouse(month_later, tmp_path):
+    import pyarrow.parquet as pq
+
+    from insurance_dw import export
+
+    counts = export.export(tmp_path)
+    assert all(n > 0 for n in counts.values()), counts
+
+    def total(name, column):
+        return sum(v for v in pq.read_table(tmp_path / f"{name}.parquet").column(column).to_pylist() if v is not None)
+
+    # the summarised files add up to the facts: premium and claim money to the cent
+    assert total("written_premium", "Written Premium") == scalar("SELECT SUM(written_premium) FROM dw.fact_written_premium")
+    assert total("claim_movements", "Incurred Claims") == scalar("SELECT SUM(incurred_change) FROM dw.fact_claim_movement")
+    assert counts["claims"] == scalar("SELECT COUNT(*) FROM dw.fact_claim")
+    # earned premium keeps its 6 decimals: the total matches exactly
+    assert total("earned_premium", "Earned Premium") == scalar("SELECT SUM(earned_premium) FROM dw.fact_earned_premium_monthly")
+    # policies are counted once even when they have several coverages
+    assert total("written_premium", "Policies") == scalar("SELECT COUNT(DISTINCT policy_number) FROM dw.fact_written_premium")
+    # no personal data in the feed
+    columns = {c for name in counts for c in pq.read_schema(tmp_path / f"{name}.parquet").names}
+    assert not {"CPF", "Customer", "Plate", "Full Name"} & columns
+
+
 def test_the_nightly_agent_job_can_be_created(month_later):
     agent = dw(
         "SELECT COUNT(*) AS n FROM sys.dm_server_services WHERE servicename LIKE 'SQL Server Agent%%' AND status_desc = 'Running'"

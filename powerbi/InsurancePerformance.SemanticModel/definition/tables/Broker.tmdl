@@ -1,0 +1,41 @@
+/// Brokers who sell the policies (registration at SUSEP, state, active or not).
+table Broker
+
+	column 'Broker Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Broker Key
+
+	column Broker
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Broker
+
+	column 'SUSEP Code'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: SUSEP Code
+
+	column 'Broker State'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Broker State
+
+	column 'Broker Status'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Broker Status
+
+	partition Broker = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "broker.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Broker Key", Int64.Type }, { "Broker", type text }, { "SUSEP Code", type text }, { "Broker State", type text }, { "Broker Status", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,36 @@
+/// Brazilian states and regions: customer address for premium, place of occurrence for claims.
+table Geography
+
+	column 'Geography Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Geography Key
+
+	column 'State Code'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: State Code
+
+	column State
+		dataType: string
+		summarizeBy: none
+		sourceColumn: State
+
+	column Region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Region
+
+	partition Geography = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "geography.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Geography Key", Int64.Type }, { "State Code", type text }, { "State", type text }, { "Region", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

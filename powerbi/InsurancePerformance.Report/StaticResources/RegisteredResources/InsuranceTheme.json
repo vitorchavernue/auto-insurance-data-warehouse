@@ -1,0 +1,40 @@
+{
+  "name": "Insurance Performance (dark)",
+  "dataColors": [
+    "#E11D48",
+    "#F2B544",
+    "#D6D3D1",
+    "#34D399",
+    "#A78BFA",
+    "#FB923C",
+    "#78716C",
+    "#FDA4AF"
+  ],
+  "foreground": "#F5EEF0",
+  "foregroundNeutralSecondary": "#A8999F",
+  "foregroundNeutralTertiary": "#6F6268",
+  "background": "#1C1619",
+  "backgroundLight": "#241C21",
+  "backgroundNeutral": "#34292F",
+  "tableAccent": "#E11D48",
+  "good": "#34D399",
+  "neutral": "#F2B544",
+  "bad": "#E11D48",
+  "maximum": "#E11D48",
+  "center": "#7A2A44",
+  "minimum": "#1C1619",
+  "textClasses": {
+    "label": {
+      "color": "#F5EEF0"
+    },
+    "callout": {
+      "color": "#F5EEF0"
+    },
+    "title": {
+      "color": "#F5EEF0"
+    },
+    "header": {
+      "color": "#F5EEF0"
+    }
+  }
+}
