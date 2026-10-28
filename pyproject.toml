@@ -19,3 +19,4 @@ select = ["E", "F", "I", "B", "UP"]
 # SVG markup of the page designs
 "scripts/build_report.py" = ["E501"]
 "scripts/build_architecture.py" = ["E501"]
+"scripts/build_data_model.py" = ["E501"]
