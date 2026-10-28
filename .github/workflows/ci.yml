@@ -1,0 +1,79 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Fast feedback, no database: Python style, T-SQL syntax and the synthetic data rules
+  lint-and-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Lint Python
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Parse every T-SQL script (syntax gate before touching a server)
+        run: sqlfluff parse --dialect tsql sql > /dev/null
+      - name: Unit tests
+        run: pytest -q tests/unit
+
+  # The real thing: SQL Server 2022 in a throwaway container
+  integration:
+    needs: lint-and-unit
+    runs-on: ubuntu-latest
+    services:
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        env:
+          ACCEPT_EULA: "Y"
+          MSSQL_SA_PASSWORD: CiOnlyPassw0rd2026  # throwaway container used only by this job
+          MSSQL_AGENT_ENABLED: "true"            # so the nightly job script is tested too
+        ports: ["1433:1433"]
+        options: >-
+          --health-cmd "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P CiOnlyPassw0rd2026 -Q 'SELECT 1' -b -o /dev/null"
+          --health-interval 10s --health-timeout 5s --health-retries 20 --health-start-period 20s
+    env:
+      PYTHONPATH: src
+      MSSQL_HOST: localhost
+      MSSQL_PASSWORD: CiOnlyPassw0rd2026
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Integration tests (first load, incremental, history, gate, rollback, legacy report match)
+        run: |
+          set -o pipefail
+          pytest -q -rfEs tests/integration 2>&1 | tee pytest.log
+          echo "**Integration tests:** $(tail -1 pytest.log)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Show failing tests
+        if: failure()
+        run: grep -E "^(FAILED|ERROR|E  )" pytest.log | grep -v "DB-Lib\|_mssql.MSSQL" | head -40 | sed 's/^/::error::/'
+
+      - name: Full-scale demo (15,000 customers) and the before/after benchmark
+        run: |
+          python -m insurance_dw demo
+          cat reports/run_1.md reports/run_2.md reports/benchmark.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Show the demo reports
+        if: always()
+        run: cat reports/*.md 2>/dev/null | grep -E "error|❌|💥|differences|Elapsed|Logical|CPU" | head -40 | sed 's/^/::notice::/' || true
+
+      - name: Upload run reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: warehouse-reports
+          path: reports/
