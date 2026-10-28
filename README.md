@@ -26,6 +26,28 @@ What it shows:
 
 ---
 
+## Architecture
+
+![Architecture: legacy source, ODS, star schema, quality gate and consumption](docs/images/architecture.png)
+
+The warehouse is written in **T-SQL** and runs inside SQL Server: tables, 18 stored procedures and 15 views in
+[`sql/`](sql/). Python ([`src/insurance_dw`](src/insurance_dw)) only drives it: it creates the synthetic legacy data,
+deploys the scripts, calls `etl.usp_run`, runs the benchmark and exports the Power BI feed.
+
+![How it was built: assess, design, build the ODS, build the star, gate the release, prove it, operate and serve](docs/images/delivery_steps.png)
+
+| Layer | What it holds | Why |
+|---|---|---|
+| **Legacy** ([`sql/legacy`](sql/legacy)) | The policy system as found: Portuguese names, text dates, no foreign keys, only primary-key indexes | The starting point; never written by the warehouse |
+| **ODS** ([`03`](sql/dw/03_ods_tables.sql), [`05`](sql/dw/05_load_ods.sql)) | One table per legacy table, cleaned and typed, current state, stamped with the run that changed each row | Reports stop hitting production; the warehouse knows exactly what changed |
+| **Star schema** ([`04`](sql/dw/04_star_schema.sql), [`06`](sql/dw/06_load_dimensions.sql), [`07`](sql/dw/07_load_facts.sql)) | 7 dimensions, 4 facts | Analysis by any combination of month, product, vehicle, region, broker, coverage |
+| **Data quality** ([`08`](sql/dw/08_data_quality.sql)) | 10 critical + 4 info checks per run | "The job finished" is not proof; matching money is |
+| **Marts** ([`09`](sql/dw/09_marts.sql)) | Loss ratio, renewal rate, broker scorecard, theft recovery | One official definition per indicator |
+| **Power BI feed** ([`11`](sql/dw/11_powerbi_views.sql)) | Summarised facts and dimensions with business names | The dashboard depends on these views only, with no personal data |
+| **Orchestration** ([`10`](sql/dw/10_run.sql), [`jobs`](sql/jobs/nightly_job.sql)) | `etl.usp_run` + Agent job | One call, one transaction, a clear status |
+
+---
+
 ## Results
 
 **Before/after** — loss ratio report for 2026 (10 closed months × vehicle category × coverage), cold cache:
@@ -100,43 +122,6 @@ the model with Microsoft's Tabular Object Model in CI and applies 16 rules (DIVI
 by the calendar, hidden keys, every field used by a visual exists ...).
 
 ---
-
-## Architecture
-
-```mermaid
-flowchart LR
-    subgraph Legacy["SeguroLegado (OLTP, compat. 2012)"]
-        L1[Segurado · Veiculo · Corretor]
-        L2[Apolice · ApoliceCobertura]
-        L3[Sinistro · SinistroMovimento]
-        RPT[[Legacy loss ratio report]]
-    end
-    subgraph DW["SeguroDW (SQL Server 2022)"]
-        ODS[(ods<br/>cleaned, typed,<br/>current state)]
-        STAR[(dw<br/>star schema<br/>SCD2 + columnstore)]
-        DQ{dq<br/>release gate}
-        MART[mart<br/>business views]
-        REJ[etl.rejected_row<br/>reason + money]
-    end
-    AG([SQL Server Agent<br/>02:30 nightly]) --> RUN[etl.usp_run<br/>one transaction]
-    RUN --> ODS
-    L1 & L2 & L3 -- changed rows<br/>watermark --> ODS
-    ODS -- cannot be placed --> REJ
-    ODS --> STAR --> DQ
-    Legacy -. reconciled with .-> DQ
-    DQ -- passed --> MART --> PBI[Reports / Power BI]
-    DQ -- failed --> ALERT[job fails · operators alerted]
-```
-
-| Layer | What it holds | Why |
-|---|---|---|
-| **Legacy** ([`sql/legacy`](sql/legacy)) | The policy system as found: Portuguese names, text dates, no foreign keys, only primary-key indexes | The starting point; never written by the warehouse |
-| **ODS** ([`03`](sql/dw/03_ods_tables.sql), [`05`](sql/dw/05_load_ods.sql)) | One table per legacy table, cleaned and typed, current state, stamped with the run that changed each row | Reports stop hitting production; the warehouse knows exactly what changed |
-| **Star schema** ([`04`](sql/dw/04_star_schema.sql), [`06`](sql/dw/06_load_dimensions.sql), [`07`](sql/dw/07_load_facts.sql)) | 7 dimensions, 4 facts | Analysis by any combination of month, product, vehicle, region, broker, coverage |
-| **Data quality** ([`08`](sql/dw/08_data_quality.sql)) | 10 critical + 4 info checks per run | "The job finished" is not proof; matching money is |
-| **Marts** ([`09`](sql/dw/09_marts.sql)) | Loss ratio, renewal rate, broker scorecard, theft recovery | One official definition per indicator |
-| **Power BI feed** ([`11`](sql/dw/11_powerbi_views.sql)) | Summarised facts and dimensions with business names | The dashboard depends on these views only, with no personal data |
-| **Orchestration** ([`10`](sql/dw/10_run.sql), [`jobs`](sql/jobs/nightly_job.sql)) | `etl.usp_run` + Agent job | One call, one transaction, a clear status |
 
 ## Dimensional model
 
@@ -233,7 +218,7 @@ sql/dw/           01 schemas, control and reference tables · 02 cleaning functi
 sql/jobs/         SQL Server Agent nightly job
 src/insurance_dw/ seed.py (synthetic legacy data) · deploy.py · run.py · benchmark.py · export.py · CLI
 powerbi/          Insurance Performance dashboard (PBIP: TMDL model + report pages) and its data
-scripts/          build_report.py (report as code) · validate_model.py (dashboard quality gate)
+scripts/          build_report.py (report as code) · validate_model.py (dashboard quality gate) · build_architecture.py (these diagrams)
 tests/            unit · integration (real SQL Server) · powerbi
 docs/             ADRs · runbook
 ```

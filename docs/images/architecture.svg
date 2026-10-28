@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1340" viewBox="0 0 1920 1340">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0E0B0C"/><stop offset="1" stop-color="#1A1317"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FDA4AF"/><stop offset="1" stop-color="#9F1239"/></linearGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1800 0) scale(900)">
+    <stop stop-color="#E11D48" stop-opacity="0.16"/><stop offset="1" stop-color="#E11D48" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity="0.04"/></pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#FDA4AF"/></marker>
+  <marker id="arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#F2B544"/></marker>
+</defs>
+<rect width="1920" height="1340" rx="28" fill="url(#bg)"/>
+<rect width="1920" height="1340" rx="28" fill="url(#glow)"/>
+<rect width="1920" height="1340" rx="28" fill="url(#dots)"/>
+<g id="Header">
+<circle cx="88" cy="78" r="30" fill="none" stroke="url(#accent)" stroke-width="2.5"/><g transform="translate(70.0 60.0) scale(1.5000)" fill="none" stroke="#FDA4AF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g>
+<text x="136.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#FDA4AF" text-anchor="start" letter-spacing="4">ARCHITECTURE</text>
+<text x="136.0" y="108.0" font-family="Inter, Segoe UI, sans-serif" font-size="38" font-weight="800" fill="#F5EEF0" text-anchor="start">Auto Insurance Data Warehouse</text>
+<text x="1860.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="500" fill="#B3A4AA" text-anchor="end">SQL Server 2022 · T-SQL · Power BI</text>
+<text x="1860.0" y="100.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="400" fill="#7F7077" text-anchor="end">legacy OLTP → ODS → star schema → quality gate → marts and Power BI</text>
+<rect x="60" y="138" width="1800" height="1.5" fill="#3A2E34"/><rect x="60" y="137.5" width="120" height="2.5" fill="url(#accent)"/>
+</g>
+<rect x="60" y="172" width="1800" height="92" rx="20" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<circle cx="112" cy="218" r="26" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(96.0 202.0) scale(1.3333)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="8"/><path d="M12 8v4.5l3 2"/></g>
+<text x="154.0" y="212.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FDA4AF" text-anchor="start" letter-spacing="3">ORCHESTRATION</text>
+<text x="154.0" y="238.0" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#F5EEF0" text-anchor="start">SQL Server Agent · every night 02:30</text>
+<rect x="600.0" y="202.0" width="326.4" height="29" rx="14.5" fill="#241C21" stroke="#F2B544" stroke-opacity="0.55" stroke-width="1.2"/><text x="612.0" y="220.5" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#F2B544" text-anchor="start">EXEC etl.usp_run  ·  one transaction</text>
+<rect x="952.4" y="202.0" width="74.4" height="29" rx="14.5" fill="#241C21" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1.2"/><text x="964.4" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">1  ODS</text>
+<path d="M1032.8000000000002 216.5 h16" stroke="#FDA4AF" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1056.8" y="202.0" width="133.2" height="29" rx="14.5" fill="#241C21" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1.2"/><text x="1068.8" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">2  Dimensions</text>
+<path d="M1196.0000000000002 216.5 h16" stroke="#FDA4AF" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1220.0" y="202.0" width="91.2" height="29" rx="14.5" fill="#241C21" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1.2"/><text x="1232.0" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">3  Facts</text>
+<path d="M1317.2000000000003 216.5 h16" stroke="#FDA4AF" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1341.2" y="202.0" width="150.0" height="29" rx="14.5" fill="#241C21" stroke="#FDA4AF" stroke-opacity="0.55" stroke-width="1.2"/><text x="1353.2" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">4  Quality gate</text>
+<rect x="1521.2" y="202.0" width="71.0" height="28" rx="14.0" fill="#241C21" stroke="#34D399" stroke-opacity="0.55" stroke-width="1.2"/><text x="1533.2" y="219.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#34D399" text-anchor="start">passed</text>
+<rect x="1602.2" y="202.0" width="71.0" height="28" rx="14.0" fill="#241C21" stroke="#F2B544" stroke-opacity="0.55" stroke-width="1.2"/><text x="1614.2" y="219.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F2B544" text-anchor="start">failed</text>
+<rect x="1683.3" y="202.0" width="149.4" height="28" rx="14.0" fill="#241C21" stroke="#E11D48" stroke-opacity="0.55" stroke-width="1.2"/><text x="1695.3" y="219.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#E11D48" text-anchor="start">error → rollback</text>
+<g id="Layer 1 Legacy source">
+<rect x="60.0" y="300" width="318.4" height="660" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<rect x="86.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="112.0" cy="356" r="28" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(95.0 339.0) scale(1.4167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.8"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13"/><path d="M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></g>
+<text x="352.4" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#3A2E34" text-anchor="end">01</text>
+<text x="86.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="25" font-weight="800" fill="#F5EEF0" text-anchor="start">Legacy source</text>
+<text x="86.0" y="446.0" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">SeguroLegado · OLTP</text>
+<text x="86.0" y="470.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#B3A4AA" text-anchor="start">SQL Server · compat. 2012</text>
+<rect x="86.0" y="488" width="266.4" height="1" fill="#3A2E34"/>
+<rect x="86.0" y="502" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="96.0" y="522.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Segurado</text>
+<rect x="223.2" y="502" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="233.2" y="522.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Veiculo</text>
+<rect x="86.0" y="540" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="96.0" y="560.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Corretor</text>
+<rect x="223.2" y="540" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="233.2" y="560.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Produto</text>
+<rect x="86.0" y="578" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="96.0" y="598.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Apolice</text>
+<rect x="223.2" y="578" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="233.2" y="598.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">ApoliceCobertura</text>
+<rect x="86.0" y="616" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="96.0" y="636.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">Sinistro</text>
+<rect x="223.2" y="616" width="129.2" height="30" rx="8" fill="#241C21" stroke="#3A2E34"/>
+<text x="233.2" y="636.0" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" font-weight="500" fill="#F5EEF0" text-anchor="start">SinistroMovimento</text>
+<circle cx="91.0" cy="685" r="3.5" fill="#E11D48"/>
+<text x="104.0" y="690.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Dates kept as text, categories</text><text x="104.0" y="711.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">typed by hand</text>
+<circle cx="91.0" cy="739.6" r="3.5" fill="#E11D48"/>
+<text x="104.0" y="744.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">CPFs that lost their leading</text><text x="104.0" y="765.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">zeros</text>
+<circle cx="91.0" cy="794.2" r="3.5" fill="#E11D48"/>
+<text x="104.0" y="799.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">No foreign keys, only primary</text><text x="104.0" y="820.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">keys</text>
+<circle cx="91.0" cy="848.8000000000001" r="3.5" fill="#E11D48"/>
+<text x="104.0" y="853.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Reports ran here, against</text><text x="104.0" y="875.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">production</text>
+<rect x="78.0" y="898" width="282.4" height="44" rx="12" fill="#241C21"/>
+<text x="92.0" y="925.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">Read only: the warehouse never</text><text x="92.0" y="943.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">writes here</text>
+</g>
+<path d="M384.4 630.0 h38" stroke="#FDA4AF" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 2 ODS">
+<rect x="430.4" y="300" width="318.4" height="660" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<rect x="456.4" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="482.4" cy="356" r="28" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(465.4 339.0) scale(1.4167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></g>
+<text x="722.8" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#3A2E34" text-anchor="end">02</text>
+<text x="456.4" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="25" font-weight="800" fill="#F5EEF0" text-anchor="start">ODS</text>
+<text x="456.4" y="446.0" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">ods · 8 tables</text>
+<text x="456.4" y="470.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#B3A4AA" text-anchor="start">8 MERGE procedures</text>
+<rect x="456.4" y="488" width="266.4" height="1" fill="#3A2E34"/>
+<circle cx="461.4" cy="517" r="3.5" fill="#E11D48"/>
+<text x="474.4" y="522.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Incremental by watermark</text><text x="474.4" y="543.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">(5-min overlap)</text>
+<circle cx="461.4" cy="571.6" r="3.5" fill="#E11D48"/>
+<text x="474.4" y="576.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">CPF check digits, text dates,</text><text x="474.4" y="597.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">code mapping tables</text>
+<circle cx="461.4" cy="626.2" r="3.5" fill="#E11D48"/>
+<text x="474.4" y="631.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Upsert only when a value</text><text x="474.4" y="652.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">changed: re-runs touch 0 rows</text>
+<circle cx="461.4" cy="680.8000000000001" r="3.5" fill="#E11D48"/>
+<text x="474.4" y="685.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Rows that cannot be placed go</text><text x="474.4" y="707.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">to etl.rejected_row with</text><text x="474.4" y="728.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">reason and money</text>
+<circle cx="461.4" cy="756.7" r="3.5" fill="#E11D48"/>
+<text x="474.4" y="761.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Every row stamped with the run</text><text x="474.4" y="783.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">that changed it</text>
+<rect x="448.4" y="898" width="282.4" height="44" rx="12" fill="#241C21"/>
+<text x="462.4" y="925.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">Cleaned, typed, current state</text>
+</g>
+<path d="M754.8 630.0 h38" stroke="#FDA4AF" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 3 Star schema">
+<rect x="800.8" y="300" width="318.4" height="660" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<rect x="826.8" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="852.8" cy="356" r="28" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(835.8 339.0) scale(1.4167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></g>
+<text x="1093.2" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#3A2E34" text-anchor="end">03</text>
+<text x="826.8" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="25" font-weight="800" fill="#F5EEF0" text-anchor="start">Star schema</text>
+<text x="826.8" y="446.0" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">dw · 7 dimensions · 4 facts</text>
+<text x="826.8" y="470.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#B3A4AA" text-anchor="start">Kimball · columnstore</text>
+<rect x="826.8" y="488" width="266.4" height="1" fill="#3A2E34"/>
+<text x="826.8" y="522.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#7F7077" text-anchor="start" letter-spacing="2">DIMENSIONS</text>
+<rect x="826.8" y="536" width="49.1" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="836.8" y="555.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Date</text>
+<rect x="883.9" y="536" width="129.2" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="893.9" y="555.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Customer · SCD2</text>
+<rect x="1021.1" y="536" width="71.0" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="1031.1" y="555.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Vehicle</text>
+<rect x="826.8" y="572" width="63.7" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="836.8" y="591.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Broker</text>
+<rect x="898.5" y="572" width="71.0" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="908.5" y="591.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Product</text>
+<rect x="977.4" y="572" width="78.2" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="987.4" y="591.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Coverage</text>
+<rect x="826.8" y="608" width="85.5" height="28" rx="14" fill="#241C21" stroke="#7DB3FF" stroke-opacity="0.5"/>
+<text x="836.8" y="627.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7DB3FF" text-anchor="start">Geography</text>
+<text x="826.8" y="670.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#7F7077" text-anchor="start" letter-spacing="2">FACTS</text>
+<rect x="826.8" y="684" width="266.4" height="46" rx="10" fill="#241C21" stroke="#F2B544" stroke-opacity="0.45"/>
+<text x="840.8" y="704.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">Written premium</text>
+<text x="840.8" y="722.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#F2B544" text-anchor="start">transaction</text>
+<rect x="826.8" y="738" width="266.4" height="46" rx="10" fill="#241C21" stroke="#F2B544" stroke-opacity="0.45"/>
+<text x="840.8" y="758.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">Earned premium / month</text>
+<text x="840.8" y="776.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#F2B544" text-anchor="start">snapshot · CCI</text>
+<rect x="826.8" y="792" width="266.4" height="46" rx="10" fill="#241C21" stroke="#F2B544" stroke-opacity="0.45"/>
+<text x="840.8" y="812.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">Claim</text>
+<text x="840.8" y="830.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#F2B544" text-anchor="start">accumulating</text>
+<rect x="826.8" y="846" width="266.4" height="46" rx="10" fill="#241C21" stroke="#F2B544" stroke-opacity="0.45"/>
+<text x="840.8" y="866.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">Claim movement</text>
+<text x="840.8" y="884.0" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#F2B544" text-anchor="start">transaction · CCI</text>
+<rect x="818.8" y="898" width="282.4" height="44" rx="12" fill="#241C21"/>
+<text x="832.8" y="925.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">Only what changed is rebuilt</text>
+</g>
+<path d="M1125.2 630.0 h38" stroke="#FDA4AF" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 4 Quality gate">
+<rect x="1171.2" y="300" width="318.4" height="660" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<rect x="1197.2" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="1223.2" cy="356" r="28" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(1206.2 339.0) scale(1.4167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g>
+<text x="1463.6" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#3A2E34" text-anchor="end">04</text>
+<text x="1197.2" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="25" font-weight="800" fill="#F5EEF0" text-anchor="start">Quality gate</text>
+<text x="1197.2" y="446.0" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">dq · 14 checks per run</text>
+<text x="1197.2" y="470.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#B3A4AA" text-anchor="start">reconciled with the source</text>
+<rect x="1197.2" y="488" width="266.4" height="1" fill="#3A2E34"/>
+<circle cx="1202.2" cy="517" r="3.5" fill="#E11D48"/>
+<text x="1215.2" y="522.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Written premium = legacy, to</text><text x="1215.2" y="543.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">the cent</text>
+<circle cx="1202.2" cy="571.6" r="3.5" fill="#E11D48"/>
+<text x="1215.2" y="576.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Earned premium = independent</text><text x="1215.2" y="597.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">recalculation</text>
+<circle cx="1202.2" cy="626.2" r="3.5" fill="#E11D48"/>
+<text x="1215.2" y="631.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Claim money = legacy +</text><text x="1215.2" y="652.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">rejected</text>
+<circle cx="1202.2" cy="680.8000000000001" r="3.5" fill="#E11D48"/>
+<text x="1215.2" y="685.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">No orphan keys, unique grain,</text><text x="1215.2" y="707.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">SCD2 history consistent</text>
+<circle cx="1202.2" cy="735.4000000000001" r="3.5" fill="#E11D48"/>
+<text x="1215.2" y="740.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">4 info checks for the business</text><text x="1215.2" y="761.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">teams</text>
+<rect x="1189.2" y="898" width="282.4" height="44" rx="12" fill="#241C21"/>
+<text x="1203.2" y="925.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">passed · failed (not released) ·</text><text x="1203.2" y="943.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">error (rolled back)</text>
+</g>
+<path d="M1495.6 630.0 h38" stroke="#FDA4AF" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 5 Consumption">
+<rect x="1541.6" y="300" width="318.4" height="660" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<rect x="1567.6" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="1593.6" cy="356" r="28" fill="#241C21" stroke="#9F1239" stroke-width="1.5"/>
+<g transform="translate(1576.6 339.0) scale(1.4167)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></g>
+<text x="1834.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#3A2E34" text-anchor="end">05</text>
+<text x="1567.6" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="25" font-weight="800" fill="#F5EEF0" text-anchor="start">Consumption</text>
+<text x="1567.6" y="446.0" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#FDA4AF" text-anchor="start">mart · pbi</text>
+<text x="1567.6" y="470.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#B3A4AA" text-anchor="start">views with business names</text>
+<rect x="1567.6" y="488" width="266.4" height="1" fill="#3A2E34"/>
+<circle cx="1572.6" cy="517" r="3.5" fill="#E11D48"/>
+<text x="1585.6" y="522.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">4 marts: loss ratio, renewal</text><text x="1585.6" y="543.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">rate, broker scorecard, theft</text><text x="1585.6" y="564.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">recovery</text>
+<circle cx="1572.6" cy="592.9" r="3.5" fill="#E11D48"/>
+<text x="1585.6" y="597.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">11 Power BI feed views, no</text><text x="1585.6" y="619.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">personal data</text>
+<circle cx="1572.6" cy="647.5" r="3.5" fill="#E11D48"/>
+<text x="1585.6" y="652.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Parquet export for the PBIP</text><text x="1585.6" y="673.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">project</text>
+<circle cx="1572.6" cy="702.1" r="3.5" fill="#E11D48"/>
+<text x="1585.6" y="707.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">Power BI dashboard: 5 pages,</text><text x="1585.6" y="728.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F5EEF0" text-anchor="start">30 DAX measures</text>
+<rect x="1559.6" y="898" width="282.4" height="44" rx="12" fill="#241C21"/>
+<text x="1573.6" y="925.0" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">One official definition per</text><text x="1573.6" y="943.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B3A4AA" text-anchor="start">indicator</text>
+</g>
+<rect x="60" y="1000" width="888.0" height="300" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<g transform="translate(88.0 1026.0) scale(1.2500)" fill="none" stroke="#FDA4AF" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></g>
+<text x="130.0" y="1050.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F5EEF0" text-anchor="start">Where the code is</text>
+<rect x="88" y="1080" width="832.0" height="62" rx="10" fill="#241C21"/>
+<rect x="88" y="1080" width="5" height="62" rx="2.5" fill="#FDA4AF"/>
+<text x="108.0" y="1106.0" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">sql/legacy · sql/dw · sql/jobs</text>
+<text x="748.0" y="1106.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FDA4AF" text-anchor="start">T-SQL</text>
+<text x="908.0" y="1106.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#B3A4AA" text-anchor="end">2,371 lines</text>
+<text x="108.0" y="1129.0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B3A4AA" text-anchor="start">The warehouse itself: tables, 18 procedures, 15 views, Agent job</text>
+<rect x="88" y="1150" width="832.0" height="62" rx="10" fill="#241C21"/>
+<rect x="88" y="1150" width="5" height="62" rx="2.5" fill="#F2B544"/>
+<text x="108.0" y="1176.0" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">src/insurance_dw</text>
+<text x="748.0" y="1176.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#F2B544" text-anchor="start">Python</text>
+<text x="908.0" y="1176.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#B3A4AA" text-anchor="end">1,098 lines</text>
+<text x="108.0" y="1199.0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B3A4AA" text-anchor="start">Tooling: synthetic legacy data, deploy, run, benchmark, export</text>
+<rect x="88" y="1220" width="832.0" height="62" rx="10" fill="#241C21"/>
+<rect x="88" y="1220" width="5" height="62" rx="2.5" fill="#34D399"/>
+<text x="108.0" y="1246.0" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F5EEF0" text-anchor="start">tests · .github/workflows</text>
+<text x="748.0" y="1246.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#34D399" text-anchor="start">pytest · CI</text>
+<text x="908.0" y="1246.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#B3A4AA" text-anchor="end"></text>
+<text x="108.0" y="1269.0" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B3A4AA" text-anchor="start">Unit, 14 integration tests on SQL Server 2022, Power BI gate</text>
+<rect x="972.0" y="1000" width="888.0" height="300" rx="22" fill="#1C1619" stroke="#3A2E34" stroke-width="1.5"/>
+<g transform="translate(1000.0 1026.0) scale(1.2500)" fill="none" stroke="#F2B544" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.5"/></g>
+<text x="1042.0" y="1050.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F5EEF0" text-anchor="start">What the project proves</text>
+<rect x="1000.0" y="1082" width="199.0" height="192" rx="14" fill="#241C21"/>
+<rect x="1018.0" y="1082" width="44" height="3" rx="1.5" fill="#F2B544"/>
+<text x="1018.0" y="1146.0" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#F2B544" text-anchor="start">608×</text>
+<text x="1018.0" y="1184.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">fewer reads than the</text><text x="1018.0" y="1203.9" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">legacy report, same</text><text x="1018.0" y="1223.8" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">90 lines</text>
+<rect x="1211.0" y="1082" width="199.0" height="192" rx="14" fill="#241C21"/>
+<rect x="1229.0" y="1082" width="44" height="3" rx="1.5" fill="#F2B544"/>
+<text x="1229.0" y="1146.0" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#F2B544" text-anchor="start">0.00</text>
+<text x="1229.0" y="1184.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">difference in premium</text><text x="1229.0" y="1203.9" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">and claim money</text>
+<rect x="1422.0" y="1082" width="199.0" height="192" rx="14" fill="#241C21"/>
+<rect x="1440.0" y="1082" width="44" height="3" rx="1.5" fill="#F2B544"/>
+<text x="1440.0" y="1146.0" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#F2B544" text-anchor="start">0</text>
+<text x="1440.0" y="1184.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">rows touched when a</text><text x="1440.0" y="1203.9" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">run is repeated</text>
+<rect x="1633.0" y="1082" width="199.0" height="192" rx="14" fill="#241C21"/>
+<rect x="1651.0" y="1082" width="44" height="3" rx="1.5" fill="#F2B544"/>
+<text x="1651.0" y="1146.0" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#F2B544" text-anchor="start">1</text>
+<text x="1651.0" y="1184.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">transaction per run:</text><text x="1651.0" y="1203.9" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">lands whole or rolls</text><text x="1651.0" y="1223.8" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B3A4AA" text-anchor="start">back</text>
+</svg>
