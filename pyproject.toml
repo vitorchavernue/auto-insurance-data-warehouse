@@ -1,0 +1,16 @@
+[project]
+name = "auto-insurance-data-warehouse"
+version = "1.0.0"
+description = "Auto insurance data warehouse on SQL Server: legacy OLTP -> ODS -> star schema, T-SQL incremental ETL and data quality gate"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
